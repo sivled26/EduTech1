@@ -25,5 +25,19 @@ public class Usuario {
     private String apellido;
 
     @Column(nullable = false)
-    private String correo;
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "email='" + email + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", nombres='" + nombres + '\'' +
+                ", rut='" + rut + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }

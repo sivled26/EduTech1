@@ -1,12 +1,11 @@
 package com.example.Edutech_gestion_usuarios.controller;
 
 import com.example.Edutech_gestion_usuarios.model.Usuario;
+import com.example.Edutech_gestion_usuarios.repository.UsuarioRepository;
 import com.example.Edutech_gestion_usuarios.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +15,7 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+    private UsuarioRepository usuarioRepository;
 
     @GetMapping
     public ResponseEntity<List<Usuario>> listar(){
@@ -25,5 +25,10 @@ public class UsuarioController {
         }
         System.out.println(usuarios);
         return ResponseEntity.ok(usuarios);
+    }
+
+    @PostMapping
+    public Usuario create(@RequestBody Usuario usuario){
+        return usuarioRepository.save(usuario);
     }
 }
